@@ -1,6 +1,6 @@
 
 
-#[derive(Debug,Clone)]
+
 struct TransPart 
 {
     start_positon: usize,
@@ -22,8 +22,13 @@ impl TransPart{
     }
 }
 
+// 
+fn GetTransPartsFromFile(file_path: String) -> Result<Vec<TransPart>, String>{
 
-fn DealWithMdStr(in_str: String) -> String {
+    Err("unimplement".to_string())
+}
 
-    String::new()
+fn GenerateTransOutFile(file_path: String, trans_part: Vec<TransPart>) -> Result<String, String> {
+
+    Err("unimplement".to_string())
 }
