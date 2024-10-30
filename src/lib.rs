@@ -1,5 +1,6 @@
 
 
+#[derive(Debug,Clone)]
 struct TransPart 
 {
     start_positon: usize,
@@ -22,4 +23,7 @@ impl TransPart{
 }
 
 
+fn DealWithMdStr(in_str: String) -> String {
 
+    String::new()
+}
