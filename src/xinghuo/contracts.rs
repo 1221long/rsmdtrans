@@ -1,4 +1,28 @@
 
+
+pub struct content 
+{
+    role: String,
+    content: String,
+}
+
+pub struct message
+{
+    text: Vec<content>,
+}
+
+pub struct payload
+{
+    message: message,
+}
+
+pub struct chat
+{
+    domain: String,
+
+}
+
+
 /*
 //构造请求体
 public class JsonRequest
@@ -42,25 +66,3 @@ public class Content
     public string content { get; set; }
 }
 */
-
-pub struct content 
-{
-    role: String,
-    content: String,
-}
-
-pub struct message
-{
-    text: Vec<content>,
-}
-
-pub struct payload
-{
-    message: message,
-}
-
-pub struct chat
-{
-    domain: String,
-
-}
