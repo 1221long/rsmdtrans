@@ -137,6 +137,7 @@ namespace Webiat
         // 返回code为错误码时，请查询https://www.xfyun.cn/document/error-code解决方案
         static string GetAuthUrl()
         {
+            // Fri, 01 Nov 2024 07:42:05 GMT
             string date = DateTime.UtcNow.ToString("r");
 
             Uri uri = new Uri(hostUrl);

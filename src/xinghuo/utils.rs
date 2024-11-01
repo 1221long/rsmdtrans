@@ -1,15 +1,17 @@
-use sha2::Sha256;
-use hmac::{Hmac, Mac};
 
-mod utils {
-
+    use hmac_sha256::HMAC;
 
     pub fn HMACsha256(api_secret_key: String, data: String) -> Result<String, String> 
-    {
-        type HmacSha256 = Hmac<Sha256>;
-        
-        let mut mac = HmacSha256::new_from_slice(api_secret_key).except();
+    {        
+        let key_bytes = api_secret_key.into_bytes();
+        let data_bytes = data.into_bytes();
 
-        Ok("Ok".to_string())
+        let mac_bytes = HMAC::mac(&data_bytes, &key_bytes);
+        
+        Ok(String::from_utf8(mac_bytes.to_vec()).unwrap())
+
+        // match String::from_utf8(mac_bytes.to_vec()) {
+        //     Ok(string) => Ok(string),
+        //     Err(e) => Err("")
+        // }
     }
-}

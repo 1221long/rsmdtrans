@@ -1,23 +1,23 @@
 
-mod contracts {
-    
     #[derive(Debug)]
     pub struct Content
     {
         role: String,
         content: String,
     }
-
+    #[derive(Debug)]
     pub struct Message
     {
         text: Vec<Content>,
     }
 
+    #[derive(Debug)]
     pub struct Payload
     {
         message: Message,
     }
 
+    #[derive(Debug)]
     pub struct Chat
     {
         domain: String,
@@ -25,24 +25,26 @@ mod contracts {
         max_tokens: i32,
     }
 
+    #[derive(Debug)]
     pub struct Parameter
     {
         chat: Chat,
     }
 
+    #[derive(Debug)]
     pub struct Header
     {
         app_id: String,
         uid: String,
     }
-
+    #[derive(Debug)]
     pub struct JsonRequest
     {
         hearder: Header,
         parameter: Parameter,
         payload: Payload,
     }
-}
+
 /*
 //构造请求体
 public class JsonRequest
