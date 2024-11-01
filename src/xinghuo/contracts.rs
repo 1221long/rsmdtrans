@@ -1,23 +1,25 @@
 
-    #[derive(Debug)]
+use serde::{Serialize, Deserialize}; 
+
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Content
     {
         role: String,
         content: String,
     }
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Message
     {
         text: Vec<Content>,
     }
 
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Payload
     {
         message: Message,
     }
 
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Chat
     {
         domain: String,
@@ -25,22 +27,22 @@
         max_tokens: i32,
     }
 
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Parameter
     {
         chat: Chat,
     }
 
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct Header
     {
         app_id: String,
         uid: String,
     }
-    #[derive(Debug)]
+    #[derive(Debug,Serialize, Deserialize)]
     pub struct JsonRequest
     {
-        hearder: Header,
+        header: Header,
         parameter: Parameter,
         payload: Payload,
     }
