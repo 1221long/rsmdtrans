@@ -1,4 +1,4 @@
 
-use contracts;
-use functions;
-use utils;
+mod contracts;
+mod functions;
+mod utils;

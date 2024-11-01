@@ -1,6 +1,6 @@
 
 
-
+#[derive(Debug)]
 struct TransPart 
 {
     start_positon: usize,

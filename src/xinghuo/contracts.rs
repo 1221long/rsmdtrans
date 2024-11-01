@@ -1,46 +1,48 @@
 
+mod contracts {
+    
+    #[derive(Debug)]
+    pub struct Content
+    {
+        role: String,
+        content: String,
+    }
 
-pub struct Content 
-{
-    role: String,
-    content: String,
+    pub struct Message
+    {
+        text: Vec<Content>,
+    }
+
+    pub struct Payload
+    {
+        message: Message,
+    }
+
+    pub struct Chat
+    {
+        domain: String,
+        temperature: f64,
+        max_tokens: i32,
+    }
+
+    pub struct Parameter
+    {
+        chat: Chat,
+    }
+
+    pub struct Header
+    {
+        app_id: String,
+        uid: String,
+    }
+
+    pub struct JsonRequest
+    {
+        hearder: Header,
+        parameter: Parameter,
+        payload: Payload,
+    }
 }
-
-pub struct Message
-{
-    text: Vec<Content>,
-}
-
-pub struct Payload
-{
-    message: Message,
-}
-
-pub struct Chat
-{
-    domain: String,
-    temperature: f64,
-    max_tokens: i32,
-}
-
-pub struct Parameter
-{
-    chat: Chat,
-}
-
-pub struct Header
-{
-    app_id: String,
-    uid: String,
-}
-
-pub struct JsonRequest
-{
-    hearder: Header,
-    parameter: Parameter,
-    payload: Payload,
-}
-
 /*
 //构造请求体
 public class JsonRequest
