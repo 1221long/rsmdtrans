@@ -10,6 +10,6 @@ mod utils {
         
         let mut mac = HmacSha256::new_from_slice(api_secret_key).except();
 
-        Ok("Ok")
+        Ok("Ok".to_string())
     }
 }
