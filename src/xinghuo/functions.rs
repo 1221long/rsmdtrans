@@ -1,18 +1,18 @@
 
-    use std::mem::replace;
+    //use std::mem::replace;
 
     use chrono::Utc;
     use url::Url;
     use base64::prelude::*;
 
-    pub fn GetAuthUrl() -> Result<String, String>{
+    pub fn get_auth_url() -> Result<String, String>{
 
         // Fri, 01 Nov 2024 07:42:05 GMT
         let date_str = Utc::now().format("%a, %d %b %Y %H:%M:%S GMT").to_string();
 
         let _url = Url::parse(super::settings::HOST_URL).unwrap();
         let sign_verification = format!("host: {}\ndate: {}\nGET {} HTTP/1.1",_url.host_str().unwrap(),date_str,_url.path());
-        let sha = super::utils::HMACsha256(super::settings::API_SECRET.to_string(), sign_verification)?;
+        let sha = super::utils::hmacsha256(super::settings::API_SECRET.to_string(), sign_verification)?;
         let authorization = format!("api_key=\"{0}\", algorithm=\"{1}\", headers=\"{2}\", signature=\"{3}\"", super::settings::API_KEY.to_string(), "hmac-sha256", "host date request-line", sha);
         let mut new_url = format!("https://{}{}",_url.host_str().unwrap(),_url.path());
 
@@ -25,7 +25,7 @@
         Ok(new_url)
     }
 
-    pub fn GetAuthUrlWs() -> Result<String, String> {
-        let url = GetAuthUrl()?;
+    pub fn get_auth_url_ws() -> Result<String, String> {
+        let url = get_auth_url()?;
         Ok(url.replace("http://", "ws://").replace("https://", "wss://"))
     }

@@ -47,6 +47,13 @@ use serde::{Serialize, Deserialize};
         pub payload: Payload,
     }
 
+    // #[derive(Debug,Serialize, Deserialize)]
+    // pub struct JsonResponse
+    // {
+
+    // }
+
+
 /*
 //构造请求体
 public class JsonRequest
