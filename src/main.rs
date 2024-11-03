@@ -12,7 +12,7 @@ mod xinghuo;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>>{
 
-    let url = xinghuo::functions::GetAuthUrlWs().unwrap();
+    let url = xinghuo::functions::get_auth_url_ws().unwrap();
     let (mut ws_stream, _) = connect_async(url).await.expect("Failed to connect");
     //let (write, read) = ws_stream.split();
 
@@ -70,7 +70,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
 
 #[tokio::main]
 async fn xh_api() {
-    let url = xinghuo::functions::GetAuthUrlWs().unwrap();
+    let url = xinghuo::functions::get_auth_url_ws().unwrap();
     let (mut ws_stream, _) = connect_async(url).await.expect("Failed to connect");
     //let (write, read) = ws_stream.split();
 
