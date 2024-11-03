@@ -1,5 +1,5 @@
 
-
+/*
 #[derive(Debug)]
 struct TransPart 
 {
@@ -32,3 +32,4 @@ fn GenerateTransOutFile(file_path: String, trans_part: Vec<TransPart>) -> Result
 
     Err("unimplement".to_string())
 }
+*/

@@ -1,5 +1,4 @@
-use std::env;
-use tokio::net::TcpStream;
+//use std::env;
 use futures_util::stream::StreamExt;
 use futures_util::SinkExt;
 use tokio_tungstenite::{connect_async, tungstenite::protocol::Message};
@@ -51,7 +50,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
     };
 
     let request_json = json!(_request);
-    ws_stream.send(Message::Text(request_json.to_string())).await;
+    let _ = ws_stream.send(Message::Text(request_json.to_string())).await;
 
     // 接收 JSON 数据
     while let Some(msg) = ws_stream.next().await {
@@ -69,6 +68,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
     // fun1();
 }
 
+/*
 #[tokio::main]
 async fn xh_api() {
     let url = xinghuo::functions::get_auth_url_ws(Some(false)).unwrap();
@@ -129,3 +129,4 @@ fn fun1() {
     let args: Vec<String> = env::args().collect();
     let file_path = &args[0];
 }
+*/
