@@ -12,8 +12,9 @@ mod xinghuo;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>>{
 
-    let url = xinghuo::functions::get_auth_url_ws().unwrap();
-    let (mut ws_stream, _) = connect_async(url).await.expect("Failed to connect");
+    let url = xinghuo::functions::get_auth_url_ws(Some(false)).unwrap();
+    //println!("{}", &url);
+    let (mut ws_stream, _) = connect_async(url).await.expect("[err] Failed to connect");
     //let (write, read) = ws_stream.split();
 
     let _header = Header { 
@@ -32,7 +33,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
     };
     let mut _text = vec![Content{
         role: "user".to_string(),
-        content:"你好呀!".to_string(),
+        content:"你好！介绍一下自己".to_string(),
     }];
 
     let mut _message = xinghuo::contracts::Message {
@@ -70,7 +71,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
 
 #[tokio::main]
 async fn xh_api() {
-    let url = xinghuo::functions::get_auth_url_ws().unwrap();
+    let url = xinghuo::functions::get_auth_url_ws(Some(false)).unwrap();
     let (mut ws_stream, _) = connect_async(url).await.expect("Failed to connect");
     //let (write, read) = ws_stream.split();
 
