@@ -16,6 +16,7 @@ use sha2::Sha256;
         //println!("[result] {:?}", result);
         let code_bytes = result.into_bytes();
         println!("[code_bytes] {:?}", code_bytes);
+        // https://docs.rs/hmac/0.12.1/hmac/
         match String::from_utf8(code_bytes.to_vec()) {
             Ok(s) => Ok(s),
             Err(e) => Err("error in function".to_string()),
