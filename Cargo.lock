@@ -360,6 +360,7 @@ dependencies = [
  "chrono",
  "futures-util",
  "hmac",
+ "once_cell",
  "serde",
  "serde_json",
  "sha2",

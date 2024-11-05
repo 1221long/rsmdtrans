@@ -1,58 +1,107 @@
+pub const ROLE_USER: &str = "user";
+pub mod request {
+    use serde::{Deserialize, Serialize};
 
-use serde::{Serialize, Deserialize}; 
-
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Content
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Content {
         pub role: String,
         pub content: String,
     }
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Message
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Message {
         pub text: Vec<Content>,
     }
 
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Payload
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Payload {
         pub message: Message,
     }
 
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Chat
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Chat {
         pub domain: String,
         pub temperature: f64,
         pub max_tokens: i32,
     }
 
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Parameter
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Parameter {
         pub chat: Chat,
     }
 
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct Header
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Header {
         pub app_id: String,
         pub uid: String,
     }
-    #[derive(Debug,Serialize, Deserialize)]
-    pub struct JsonRequest
-    {
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Body {
         pub header: Header,
         pub parameter: Parameter,
         pub payload: Payload,
     }
+}
 
-    // #[derive(Debug,Serialize, Deserialize)]
-    // pub struct JsonResponse
-    // {
+/* -- json example
+{
+  "header": {
+    "code": 0,
+    "message": "Success",
+    "sid": "cht000b2fc1@dx192f9e970f3b8f2540",
+    "status": 0
+  },
+  "payload": {
+    "choices": {
+      "status": 0,
+      "seq": 0,
+      "text": [
+        {
+          "content": "你好",
+          "role": "assistant",
+          "index": 0
+        }
+      ]
+    }
+  }
+}
+*/
 
-    // }
+pub mod response {
+    use serde::{Deserialize, Serialize};
 
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Header {
+        pub code: i8,
+        pub message: String,
+        pub sid: String,
+        pub status: i8,
+    }
+
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Payload {
+        pub choices: Choices,
+    }
+
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Choices {
+        pub status: i8,
+        pub seq: i8,
+        pub text: Vec<Message>,
+    }
+
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Message {
+        pub role: String,
+        pub content: String,
+        pub index: isize,
+    }
+
+    #[derive(Debug, Serialize, Deserialize)]
+    pub struct Body {
+        pub header: Header,
+        pub payload: Payload,
+    }
+}
 
 /*
 //构造请求体
